@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
+import AudioPlayer from "@/components/AudioPlayer";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -184,21 +185,12 @@ const Index = () => {
               { title: "Детская песенка", genre: "Детская", duration: "2:50" },
               { title: "История любви", genre: "R&B", duration: "4:05" }
             ].map((track, i) => (
-              <Card 
-                key={i} 
-                className="bg-card border-gold/20 hover:border-gold transition-all duration-300 group cursor-pointer"
-              >
-                <CardContent className="pt-6">
-                  <div className="aspect-square bg-gradient-to-br from-gold/20 to-gold/5 rounded-lg mb-4 flex items-center justify-center group-hover:from-gold/30 group-hover:to-gold/10 transition-all">
-                    <Icon name="Play" className="w-12 h-12 text-gold" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{track.title}</h3>
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{track.genre}</span>
-                    <span>{track.duration}</span>
-                  </div>
-                </CardContent>
-              </Card>
+              <AudioPlayer 
+                key={i}
+                title={track.title}
+                genre={track.genre}
+                duration={track.duration}
+              />
             ))}
           </div>
         </div>
